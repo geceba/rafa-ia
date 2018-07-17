@@ -33,8 +33,8 @@ def abrir2():
     ventana.filename2 = filedialog.askopenfilename(initialdir = "C:/Users/qwerty/Desktop/PDI_spyder/imagenes",title = "Elige Tu Archivo De Imagen:", filetypes = (("Imagenes PNG", "*.png"),("Imagenes GIF ", "*.gif")))    
     global ruta2
     ruta2 = ventana.filename2
-    imagenL2 = PhotoImage(file = ruta2)
-    print(imagenL2)
+    imagenL = PhotoImage(file = ruta2)
+    print("imagen: " + imagenL)
 
     global abrirImagen2
     abrirImagen2 = canvas.create_image(600, 150, anchor=NW, image=imagenL)
