@@ -15,24 +15,24 @@ from urllib.request import urlopen
 import tkinter as tk
 from tkinter.constants import *
 from skimage.io import imread
-from pytesseract import *
+from pytesseract import image_to_string
 
 import os
 import string
 import sys
 
-from PIL import Image, ImageFont, ImageDraw
+from PIL import *
 from sklearn.model_selection import ShuffleSplit
 
 
-def ImageToString(I):
+"""def ImageToString(I):
     '''
     Uses OCR to transform an image into a string
     '''
     SI = DivideIntoSubimages(I)
     YH = cnnc.predict(SI)
     ss = SubimageShape(I)
-    return JoinStrings(YH, ss)
+    return JoinStrings(YH, ss) """
 
 def abrir1():
     ventana.filename = tk.filedialog.askopenfilename(initialdir = "C:/Users/qwerty/Desktop/PDI_spyder/imagenes",title = "Elige Tu Archivo De Imagen:", filetypes = (("Imagenes PNG", "*.png"),("Imagenes GIF ", "*.gif")))    
@@ -79,14 +79,14 @@ entrada = IntVar()
 #-----------------CODIGO--------------------------------
 def todo():
     def lectura_de_imagenes():
-        lucifer = imread(ruta) 
-        satanas = ImageToString(lucifer)
+        #lucifer = imread(ruta) 
+        #satanas = ImageToString(lucifer)
         
-        jesus = imread(ruta2) 
-        diosito = ImageToString(jesus)
+       # jesus = imread(ruta2) 
+        #diosito = ImageToString(jesus)
 
-        ruta1 = Image.open(str(satanas))
-        ruta22 = Image.open(str(diosito))
+        ruta1 = Image.open(image_to_string(ruta))
+        ruta22 = Image.open(image_to_string(ruta2))
         return io.imread(ruta1, as_grey=True)*255, io.imread(ruta22)
     
     
