@@ -85,8 +85,8 @@ def todo():
        # jesus = imread(ruta2) 
         #diosito = ImageToString(jesus)
 
-        ruta1 = Image.open(image_to_string(ruta))
-        ruta22 = Image.open(image_to_string(ruta2))
+        ruta1 = image_to_string(Image.open(ruta))
+        ruta22 = image_to_string(Image.open(ruta2))
         return io.imread(ruta1, as_grey=True)*255, io.imread(ruta22)
     
     
