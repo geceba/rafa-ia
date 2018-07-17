@@ -11,7 +11,7 @@ from sklearn.cluster import KMeans
 #from matplotlib import pyplot as plt
 from scipy.spatial import distance
 import scipy.misc
-
+from urllib.request import urlopen
 import tkinter
 from tkinter.constants import *
 
@@ -23,7 +23,7 @@ def abrir1():
     global ruta    
     ruta = ventana.filename
     imagenL = PhotoImage(file = ruta)
-    print(imagenL)
+    print(str(imagenL))
 
     global abrirImagen
     abrirImagen = canvas.create_image(1, 150, anchor=NW, image=imagenL)
@@ -34,7 +34,7 @@ def abrir2():
     global ruta2
     ruta2 = ventana.filename2
     imagenL = PhotoImage(file = ruta2)
-    print("imagen: " + imagenL)
+    print("imagen: " + str(imagenL))
 
     global abrirImagen2
     abrirImagen2 = canvas.create_image(600, 150, anchor=NW, image=imagenL)
