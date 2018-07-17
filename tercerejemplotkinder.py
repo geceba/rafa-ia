@@ -12,29 +12,32 @@ from sklearn.cluster import KMeans
 from scipy.spatial import distance
 import scipy.misc
 from urllib.request import urlopen
-import tkinter
+import tkinter as tk
 from tkinter.constants import *
+from skimage.io import imread
+from pytesser import *
+from PIL import Image
 
 
 
 
 def abrir1():
-    ventana.filename = filedialog.askopenfilename(initialdir = "C:/Users/qwerty/Desktop/PDI_spyder/imagenes",title = "Elige Tu Archivo De Imagen:", filetypes = (("Imagenes PNG", "*.png"),("Imagenes GIF ", "*.gif")))    
+    ventana.filename = tk.filedialog.askopenfilename(initialdir = "C:/Users/qwerty/Desktop/PDI_spyder/imagenes",title = "Elige Tu Archivo De Imagen:", filetypes = (("Imagenes PNG", "*.png"),("Imagenes GIF ", "*.gif")))    
     global ruta    
     ruta = ventana.filename
-    imagenL = PhotoImage(file = ruta)
-    print(str(imagenL))
+    imagenL = tk.PhotoImage(file = ruta)
 
+    print(ruta)
     global abrirImagen
     abrirImagen = canvas.create_image(1, 150, anchor=NW, image=imagenL)
     ventana.mainloop()
     
 def abrir2():
-    ventana.filename2 = filedialog.askopenfilename(initialdir = "C:/Users/qwerty/Desktop/PDI_spyder/imagenes",title = "Elige Tu Archivo De Imagen:", filetypes = (("Imagenes PNG", "*.png"),("Imagenes GIF ", "*.gif")))    
+    ventana.filename2 = tk.filedialog.askopenfilename(initialdir = "C:/Users/qwerty/Desktop/PDI_spyder/imagenes",title = "Elige Tu Archivo De Imagen:", filetypes = (("Imagenes PNG", "*.png"),("Imagenes GIF ", "*.gif")))    
     global ruta2
     ruta2 = ventana.filename2
-    imagenL = PhotoImage(file = ruta2)
-    print("imagen: " + str(imagenL))
+    imagenL = tk.PhotoImage(file = ruta2)
+    print("imagen: " + str(ruta2))
 
     global abrirImagen2
     abrirImagen2 = canvas.create_image(600, 150, anchor=NW, image=imagenL)
@@ -46,7 +49,7 @@ def abrir2():
 
 #-----------------INTERFAZ------------------------------------------------------------------
 """Creacion De Ventana Y Lienzo (Canvas)"""
-ventana = Tk()
+ventana = tk.Tk()
 w = 1000
 h = 650
 extraW=ventana.winfo_screenwidth() - w
@@ -63,11 +66,14 @@ entrada = IntVar()
 #-----------------CODIGO--------------------------------
 def todo():
     def lectura_de_imagenes():
-        img_1 = urlopen(ruta)
-        img_2 = urlopen(ruta1)
+        lucifer = imread(ruta) 
+        satanas = ImageToString(lucifer)
+        
+        jesus = imread(ruta2) 
+        diosito = ImageToString(jesus)
 
-        ruta1 = Image.open(img_1)
-        ruta22 = Image.open(img_2)
+        ruta1 = Image.open(str(satanas))
+        ruta22 = Image.open(str(diosito))
         return io.imread(ruta1, as_grey=True)*255, io.imread(ruta22)
     
     
